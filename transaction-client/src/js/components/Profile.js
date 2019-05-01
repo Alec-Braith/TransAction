@@ -233,7 +233,7 @@ class Profile extends Component {
         </h3>
         {this.printTeam()}
 
-        <DescriptionForm initialValues={_.pick(this.props.currentUser, 'description')} onSubmit={this.onSubmit} />
+        <DescriptionForm userid={this.props.currentUser.id} onSubmit={this.onSubmit} />
         <Row className="mt-3 mb-3 "> {this.printUserScores()}</Row>
       </div>
     );

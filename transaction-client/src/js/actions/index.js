@@ -68,6 +68,7 @@ export const fetchCurrentUser = () => async dispatch => {
       const response = await api.get(`/users/me`);
       //console.log(response.data);
       dispatch({ type: FETCH_CURRENT_USER, payload: response.data });
+      dispatch({ type: FETCH_USER, payload: response.data });
       resolve();
     } catch (e) {
       reject(e);

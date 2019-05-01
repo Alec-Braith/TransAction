@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { Form, Input, Button } from 'reactstrap';
 import { Field, reduxForm } from 'redux-form';
-
+import { connect } from 'react-redux';
 class DescriptionForm extends Component {
+  componentDidMount() {
+    this.props.initialize(this.props.initialValues);
+  }
   renderInput = ({ input, type }) => {
     return <Input type={type} {...input} autoComplete="off" />;
   };
@@ -27,7 +30,18 @@ class DescriptionForm extends Component {
   }
 }
 
-export default reduxForm({
+const form = reduxForm({
   form: 'profileDescriptionForm',
   enableReinitialize: true,
 })(DescriptionForm);
+
+const mapStateToProps = (state, ownProps) => {
+  return {
+    initialValues: state.users[ownProps.userid],
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  null
+)(form);

@@ -132,7 +132,7 @@ class Profile extends Component {
           />
         </h3>
         {this.printTeam()}
-        <DescriptionForm initialValues={_.pick(this.props.user, 'description')} onSubmit={this.onSubmit} />
+        <DescriptionForm userid={this.props.user.id} onSubmit={this.onSubmit} />
       </div>
     );
   }
